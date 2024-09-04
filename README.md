@@ -1,1 +1,1 @@
-# CNN---Multi-Label-Image-Classification
+# CNN: Multi-Label-Image-Classification
