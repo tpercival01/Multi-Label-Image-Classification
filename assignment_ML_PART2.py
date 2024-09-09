@@ -59,144 +59,144 @@ train_images, val_images, test_images, train_digit1_labels, val_digit1_labels, t
 
 assert os.path.exists('/Users/tpercival/Scripts/Fun/Assignment/model_checkpoints/new_model_macos.keras'), "FIle no"
 
-# def create_model(input_shape):
-#     inputs = keras.Input(shape=input_shape)
+def create_model(input_shape):
+    inputs = keras.Input(shape=input_shape)
 
-#     # Initial Convolutional Layer with L2 Regularization
-#     x = keras.layers.Conv2D(64, (7, 7), strides=2, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(inputs)
-#     x = keras.layers.BatchNormalization()(x)
-#     x = keras.layers.Activation('relu')(x)
-#     x = keras.layers.MaxPooling2D((3, 3), strides=2, padding='same')(x)
+    # Initial Convolutional Layer with L2 Regularization
+    x = keras.layers.Conv2D(64, (7, 7), strides=2, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(inputs)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.Activation('relu')(x)
+    x = keras.layers.MaxPooling2D((3, 3), strides=2, padding='same')(x)
 
-#     # Residual Block 1
-#     shortcut = x
-#     x = keras.layers.Conv2D(64, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     x = keras.layers.Activation('relu')(x)
-#     x = keras.layers.Dropout(0.2)(x)
-#     x = keras.layers.Conv2D(64, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     x = keras.layers.add([x, shortcut])
-#     x = keras.layers.Activation('relu')(x)
+    # Residual Block 1
+    shortcut = x
+    x = keras.layers.Conv2D(64, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.Activation('relu')(x)
+    x = keras.layers.Dropout(0.2)(x)
+    x = keras.layers.Conv2D(64, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.add([x, shortcut])
+    x = keras.layers.Activation('relu')(x)
     
-#     # Residual Block 2
-#     shortcut = x
-#     x = keras.layers.Conv2D(128, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     x = keras.layers.Activation('relu')(x)
-#     x = keras.layers.Dropout(0.2)(x)
-#     x = keras.layers.Conv2D(128, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     shortcut = keras.layers.Conv2D(128, kernel_size=1, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(shortcut)
-#     shortcut = keras.layers.BatchNormalization()(shortcut)
-#     x = keras.layers.add([x, shortcut])
-#     x = keras.layers.Activation('relu')(x)
-#     x = keras.layers.MaxPooling2D(pool_size=(2, 2))(x)
+    # Residual Block 2
+    shortcut = x
+    x = keras.layers.Conv2D(128, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.Activation('relu')(x)
+    x = keras.layers.Dropout(0.2)(x)
+    x = keras.layers.Conv2D(128, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    shortcut = keras.layers.Conv2D(128, kernel_size=1, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(shortcut)
+    shortcut = keras.layers.BatchNormalization()(shortcut)
+    x = keras.layers.add([x, shortcut])
+    x = keras.layers.Activation('relu')(x)
+    x = keras.layers.MaxPooling2D(pool_size=(2, 2))(x)
     
-#     # Residual Block 3
-#     shortcut = x
-#     x = keras.layers.Conv2D(256, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     x = keras.layers.Activation('relu')(x)
-#     x = keras.layers.Dropout(0.2)(x)
-#     x = keras.layers.Conv2D(256, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     shortcut = keras.layers.Conv2D(256, kernel_size=1, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(shortcut)
-#     shortcut = keras.layers.BatchNormalization()(shortcut)
-#     x = keras.layers.add([x, shortcut])
-#     x = keras.layers.Activation('relu')(x)
-#     x = keras.layers.MaxPooling2D(pool_size=(2, 2))(x)
+    # Residual Block 3
+    shortcut = x
+    x = keras.layers.Conv2D(256, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.Activation('relu')(x)
+    x = keras.layers.Dropout(0.2)(x)
+    x = keras.layers.Conv2D(256, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    shortcut = keras.layers.Conv2D(256, kernel_size=1, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(shortcut)
+    shortcut = keras.layers.BatchNormalization()(shortcut)
+    x = keras.layers.add([x, shortcut])
+    x = keras.layers.Activation('relu')(x)
+    x = keras.layers.MaxPooling2D(pool_size=(2, 2))(x)
     
-#     # Residual Block 4
-#     shortcut = x
-#     x = keras.layers.Conv2D(512, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     x = keras.layers.Activation('relu')(x)
-#     x = keras.layers.Dropout(0.2)(x)
-#     x = keras.layers.Conv2D(512, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.BatchNormalization()(x)
-#     shortcut = keras.layers.Conv2D(512, kernel_size=1, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(shortcut)
-#     shortcut = keras.layers.BatchNormalization()(shortcut)
-#     x = keras.layers.add([x, shortcut])
-#     x = keras.layers.Activation('relu')(x)
+    # Residual Block 4
+    shortcut = x
+    x = keras.layers.Conv2D(512, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.Activation('relu')(x)
+    x = keras.layers.Dropout(0.2)(x)
+    x = keras.layers.Conv2D(512, kernel_size=3, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.BatchNormalization()(x)
+    shortcut = keras.layers.Conv2D(512, kernel_size=1, strides=1, padding='same', kernel_regularizer=keras.regularizers.l2(0.0001))(shortcut)
+    shortcut = keras.layers.BatchNormalization()(shortcut)
+    x = keras.layers.add([x, shortcut])
+    x = keras.layers.Activation('relu')(x)
 
-#     # Global Average Pooling
-#     x = keras.layers.GlobalAveragePooling2D()(x)
+    # Global Average Pooling
+    x = keras.layers.GlobalAveragePooling2D()(x)
 
-#     # Fully Connected Layer with Dropout and L2 Regularization
-#     x = keras.layers.Dense(512, activation='relu', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
-#     x = keras.layers.Dropout(0.4)(x)
+    # Fully Connected Layer with Dropout and L2 Regularization
+    x = keras.layers.Dense(512, activation='relu', kernel_regularizer=keras.regularizers.l2(0.0001))(x)
+    x = keras.layers.Dropout(0.4)(x)
 
-#     # Output Layers for each digit (3 outputs)
-#     digit1_output = keras.layers.Dense(10, activation='softmax', name='digit1')(x)
-#     digit2_output = keras.layers.Dense(10, activation='softmax', name='digit2')(x)
-#     digit3_output = keras.layers.Dense(10, activation='softmax', name='digit3')(x)
+    # Output Layers for each digit (3 outputs)
+    digit1_output = keras.layers.Dense(10, activation='softmax', name='digit1')(x)
+    digit2_output = keras.layers.Dense(10, activation='softmax', name='digit2')(x)
+    digit3_output = keras.layers.Dense(10, activation='softmax', name='digit3')(x)
 
-#     # Create model
-#     model = keras.Model(inputs=inputs, outputs=[digit1_output, digit2_output, digit3_output])
+    # Create model
+    model = keras.Model(inputs=inputs, outputs=[digit1_output, digit2_output, digit3_output])
 
-#     # Compile the model with metrics for each output
-#     model.compile(
-#         optimizer=keras.optimizers.Adam(learning_rate=0.0001), 
-#         loss={'digit1': 'categorical_crossentropy', 'digit2': 'categorical_crossentropy', 'digit3': 'categorical_crossentropy'},
-#         metrics={'digit1': ['accuracy'], 'digit2': ['accuracy'], 'digit3': ['accuracy']}
-#     )
+    # Compile the model with metrics for each output
+    model.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.0001), 
+        loss={'digit1': 'categorical_crossentropy', 'digit2': 'categorical_crossentropy', 'digit3': 'categorical_crossentropy'},
+        metrics={'digit1': ['accuracy'], 'digit2': ['accuracy'], 'digit3': ['accuracy']}
+    )
 
-#     return model
+    return model
 
-# model_ = create_model(input_shape)
-# model_.summary()
+model_ = create_model(input_shape)
+model_.summary()
 
-# checkpoint_dir = "./model_checkpoints"
+checkpoint_dir = "./model_checkpoints"
 
-# if not os.path.exists(checkpoint_dir):
-#     os.makedirs(checkpoint_dir)
+if not os.path.exists(checkpoint_dir):
+    os.makedirs(checkpoint_dir)
 
-# checkpoint_callback = keras.callbacks.ModelCheckpoint(
-#     filepath = os.path.join(checkpoint_dir, "model_epoch_{epoch:02d}.keras"),
-#     save_freq = 'epoch',
-#     save_best_only = True,
-#     monitor = 'val_loss',
-#     mode = 'min',
-#     verbose = 1
-# )
+checkpoint_callback = keras.callbacks.ModelCheckpoint(
+    filepath = os.path.join(checkpoint_dir, "model_epoch_{epoch:02d}.keras"),
+    save_freq = 'epoch',
+    save_best_only = True,
+    monitor = 'val_loss',
+    mode = 'min',
+    verbose = 1
+)
 
-# early_stopping_callback = keras.callbacks.EarlyStopping(
-#     monitor = 'val_loss',
-#     patience = 5,
-#     mode = 'min',
-#     verbose = 1,
-#     restore_best_weights = True,
-#     min_delta = 0.001
-# )
+early_stopping_callback = keras.callbacks.EarlyStopping(
+    monitor = 'val_loss',
+    patience = 5,
+    mode = 'min',
+    verbose = 1,
+    restore_best_weights = True,
+    min_delta = 0.001
+)
 
 
-# lr_scheduler = keras.callbacks.ReduceLROnPlateau(
-#     monitor='val_loss',
-#     factor=0.5,
-#     patience=2,
-#     verbose=1,
-#     min_lr=1e-6
-# )
+lr_scheduler = keras.callbacks.ReduceLROnPlateau(
+    monitor='val_loss',
+    factor=0.5,
+    patience=2,
+    verbose=1,
+    min_lr=1e-6
+)
 
-# history_ = model_.fit(
-#     x = train_images,
-#     y = {'digit1': train_digit1_labels, 'digit2': train_digit2_labels, 'digit3': train_digit3_labels},
-#     batch_size = 32,
-#     epochs = 50,
-#     validation_data = (val_images, {'digit1': val_digit1_labels, 'digit2': val_digit2_labels, 'digit3': val_digit3_labels}),
-#     callbacks=[checkpoint_callback, early_stopping_callback, lr_scheduler]
-# )
+history_ = model_.fit(
+    x = train_images,
+    y = {'digit1': train_digit1_labels, 'digit2': train_digit2_labels, 'digit3': train_digit3_labels},
+    batch_size = 32,
+    epochs = 50,
+    validation_data = (val_images, {'digit1': val_digit1_labels, 'digit2': val_digit2_labels, 'digit3': val_digit3_labels}),
+    callbacks=[checkpoint_callback, early_stopping_callback, lr_scheduler]
+)
 
-model_ = keras.models.load_model('/Users/tpercival/Scripts/Fun/final_trained_model.keras')
+#model_ = keras.models.load_model('/Users/tpercival/Scripts/Fun/final_trained_model.keras')
 
-# model_.compile(
-#         optimizer=keras.optimizers.Adam(learning_rate=0.0001), 
-#         loss={'digit1': 'categorical_crossentropy', 'digit2': 'categorical_crossentropy', 'digit3': 'categorical_crossentropy'},
-#         metrics={'digit1': ['accuracy'], 'digit2': ['accuracy'], 'digit3': ['accuracy']}
-#     )
+model_.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=0.0001), 
+        loss={'digit1': 'categorical_crossentropy', 'digit2': 'categorical_crossentropy', 'digit3': 'categorical_crossentropy'},
+        metrics={'digit1': ['accuracy'], 'digit2': ['accuracy'], 'digit3': ['accuracy']}
+    )
 
-# model_.save("final_trained_model.keras")
+model_.save("final_trained_model.keras")
 
 num_samples = 10  # Number of samples to evaluate
 for i in range(num_samples):
